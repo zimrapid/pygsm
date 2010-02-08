@@ -215,13 +215,14 @@ class GsmModem(object):
         # the various modems more consistant
         self.command("ATE0",      raise_errors=False) # echo off
         self.command("AT+CMEE=1", raise_errors=False) # useful error messages
-        self.command("AT+WIND=0", raise_errors=False) # disable notifications
+        #self.command("AT+WIND=0", raise_errors=False) # disable notifications
         self.command("AT+CSMS=1", raise_errors=False) # set SMS mode to phase 2+
+        self.command("AT+CGSMS=3", raise_errors=False)# SMS over GPRS network
         self.command(self.smshandler.get_mode_cmd()      ) # make sure in PDU mode
 
         # enable new message notification
         self.command(
-            "AT+CNMI=2,2,0,0,0",
+            "AT+CNMI=2,2",
             raise_errors=False)
 
 
