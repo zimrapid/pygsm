@@ -218,6 +218,7 @@ class GsmModem(object):
         #self.command("AT+WIND=0", raise_errors=False) # disable notifications
         self.command("AT+CSMS=1", raise_errors=False) # set SMS mode to phase 2+
         self.command("AT+CGSMS=3", raise_errors=False)# SMS over GPRS network
+	self.command('AT+CSCA="+263910010102"',raise_errors=False)
         self.command(self.smshandler.get_mode_cmd()      ) # make sure in PDU mode
 
         # enable new message notification
